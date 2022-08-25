@@ -28,18 +28,20 @@
     // reducer
     const initialState = 10
 
-    function reducer(state = initialState, action) {
+    function contador(state = initialState, action) {
       if (action.type === INCREMENTAR) return state + 1
       if (action.type === SOMAR) return state + action.payload
       return state
     }
 
+    const reducer = Redux.combineReducers({ contador })
+
     const store = Redux.createStore(reducer)
 
     function render() {
-      const state = store.getState()
+      const { contador } = store.getState()
       const total = document.getElementById('total')
-      total.innerHTML = state
+      total.innerHTML = contador
     }
     render()
 
